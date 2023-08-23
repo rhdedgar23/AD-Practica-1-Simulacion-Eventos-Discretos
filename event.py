@@ -4,7 +4,7 @@ entre las entidades activas de un sistema distribuido """
 
 # ----------------------------------------------------------------------------------------		
 class Event:                   # Descendiente de la clase "object" (default)
-    """ Atributos: "name", "time", "target" y "source", 
+    """ Atributos: "name", "time", "target", "source" y "counter",
     contiene tambien un constructor y los metodos que devuelven cada
     uno de los atributos individuales """
     
