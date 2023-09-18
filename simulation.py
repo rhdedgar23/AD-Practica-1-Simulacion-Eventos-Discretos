@@ -14,24 +14,30 @@ class Simulation:                   # Descendiente de la clase "object" (default
         la tabla de procesos """
         self.engine = Simulator(maxtime)
 
-        #abre el archivo (grafo); lee linea por linea; cada linea la guarda en la lista lines
+        #abre el archivo (grafo)
         f = open(filename)
+        #lee linea por linea
+        #cada linea la guarda en la lista lines
         lines = f.readlines()
         f.close()
+
         self.graph = []
         for line in lines:
-            fields = line.split()#en cada linea, separa los valores por el espacio vacio
-            #guarda los valores en la lista fields
-            neighbors = []#por cada linea del archivo, se crea un arreglo de neighbors
+            #en cada linea, separa los valores por el espacio vacio
+            #y guarda los valores en la lista fields
+            fields = line.split()
+            #por cada linea del archivo, se crea un arreglo de neighbors
+            neighbors = []
             for f in fields:
-                neighbors.append(int(f))#se guarda cada valor en la lista neighbors
-            self.graph.append(neighbors)#esta lista de valores se concatena al arreglo graph
-
-        self.table  = [[]]          # la entrada 0 se deja vacia
-        for i,row in enumerate(self.graph):
+                #se guarda cada valor en la lista neighbors
+                neighbors.append(int(f))
+            #esta lista de valores se concatena al arreglo graph
+            self.graph.append(neighbors)
+        #la entrada 0 se deja vacia
+        self.table = [[]]
+        for i, row in enumerate(self.graph):
             newprocess = Process(row, self.engine, i+1)
             self.table.append(newprocess)
-        		
     def setModel(self, model, id):
         """ asocia al proceso con el modelo que debe ejecutar y viceversa """
         process = self.table[id]
